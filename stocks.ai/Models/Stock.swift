@@ -1,3 +1,5 @@
+import Foundation
+
 struct Stock: Identifiable {
     let id = UUID()
     let symbol: String

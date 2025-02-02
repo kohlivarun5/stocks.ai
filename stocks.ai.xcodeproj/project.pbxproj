@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F3D10A12D4F1BAA00353079 /* StockRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D109B2D4F1BAA00353079 /* StockRow.swift */; };
+		4F3D10A22D4F1BAA00353079 /* PortfolioCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D109C2D4F1BAA00353079 /* PortfolioCard.swift */; };
+		4F3D10A32D4F1BAA00353079 /* InvestmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D109D2D4F1BAA00353079 /* InvestmentsView.swift */; };
+		4F3D10A42D4F1BAA00353079 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D109F2D4F1BAA00353079 /* Portfolio.swift */; };
+		4F3D10A52D4F1BAA00353079 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D10A02D4F1BAA00353079 /* Stock.swift */; };
 		4F851CAD2D4F165500285B11 /* stocks_aiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F851CAC2D4F165500285B11 /* stocks_aiApp.swift */; };
 		4F851CAF2D4F165500285B11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F851CAE2D4F165500285B11 /* ContentView.swift */; };
 		4F851CB12D4F165500285B11 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F851CB02D4F165500285B11 /* Item.swift */; };
@@ -15,6 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F3D109B2D4F1BAA00353079 /* StockRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockRow.swift; sourceTree = "<group>"; };
+		4F3D109C2D4F1BAA00353079 /* PortfolioCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioCard.swift; sourceTree = "<group>"; };
+		4F3D109D2D4F1BAA00353079 /* InvestmentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestmentsView.swift; sourceTree = "<group>"; };
+		4F3D109F2D4F1BAA00353079 /* Portfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
+		4F3D10A02D4F1BAA00353079 /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		4F851CA92D4F165500285B11 /* stocks.ai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stocks.ai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F851CAC2D4F165500285B11 /* stocks_aiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stocks_aiApp.swift; sourceTree = "<group>"; };
 		4F851CAE2D4F165500285B11 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +46,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F3D109A2D4F1BAA00353079 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4F3D109B2D4F1BAA00353079 /* StockRow.swift */,
+				4F3D109C2D4F1BAA00353079 /* PortfolioCard.swift */,
+				4F3D109D2D4F1BAA00353079 /* InvestmentsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4F3D109E2D4F1BAA00353079 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F3D109F2D4F1BAA00353079 /* Portfolio.swift */,
+				4F3D10A02D4F1BAA00353079 /* Stock.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4F851CA02D4F165500285B11 = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +84,8 @@
 		4F851CAB2D4F165500285B11 /* stocks.ai */ = {
 			isa = PBXGroup;
 			children = (
+				4F3D109E2D4F1BAA00353079 /* Models */,
+				4F3D109A2D4F1BAA00353079 /* Views */,
 				4F851CAC2D4F165500285B11 /* stocks_aiApp.swift */,
 				4F851CAE2D4F165500285B11 /* ContentView.swift */,
 				4F851CB02D4F165500285B11 /* Item.swift */,
@@ -144,7 +175,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F3D10A22D4F1BAA00353079 /* PortfolioCard.swift in Sources */,
+				4F3D10A32D4F1BAA00353079 /* InvestmentsView.swift in Sources */,
+				4F3D10A52D4F1BAA00353079 /* Stock.swift in Sources */,
 				4F851CAF2D4F165500285B11 /* ContentView.swift in Sources */,
+				4F3D10A42D4F1BAA00353079 /* Portfolio.swift in Sources */,
+				4F3D10A12D4F1BAA00353079 /* StockRow.swift in Sources */,
 				4F851CB12D4F165500285B11 /* Item.swift in Sources */,
 				4F851CAD2D4F165500285B11 /* stocks_aiApp.swift in Sources */,
 			);

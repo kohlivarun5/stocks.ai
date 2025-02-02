@@ -21,7 +21,6 @@ struct PortfolioCard: View {
             }
         }
         .padding()
-        .background(Color(.systemBackground))
         .cornerRadius(12)
         .shadow(radius: 2)
         .padding(.horizontal)
