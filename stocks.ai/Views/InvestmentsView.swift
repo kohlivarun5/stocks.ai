@@ -13,13 +13,11 @@ struct InvestmentsView: View {
     ]
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(portfolios) { portfolio in
-                    PortfolioCard(portfolio: portfolio)
-                }
+        List {
+            ForEach(portfolios) { portfolio in
+                PortfolioCard(portfolio: portfolio)
             }
-            .navigationTitle("Investments")
         }
+        .navigationTitle("My Portfolios")
     }
 } 

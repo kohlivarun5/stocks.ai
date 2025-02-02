@@ -27,7 +27,7 @@ struct stocks_aiApp: App {
         
         WindowGroup {
             TabView {
-                InvestmentsView()
+                InvestmentsMainView()
                     .tabItem {
                         Label("Investments", systemImage: "chart.line.uptrend.xyaxis")
                     }
