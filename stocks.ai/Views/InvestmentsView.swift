@@ -1,31 +1,56 @@
 import SwiftUI
 
 struct InvestmentsView: View {
-  @State private var portfolios: [Portfolio] = [
-    Portfolio(name: "Growth", stocks: [
-      Stock(symbol: "AAPL", companyName: "Apple Inc.", shares: 10, currentPrice: 175.43, purchasePrice: 150.0),
-      Stock(symbol: "MSFT", companyName: "Microsoft", shares: 5, currentPrice: 338.11, purchasePrice: 300.0)
-    ]),
-    Portfolio(name: "Dividend", stocks: [
-      Stock(symbol: "KO", companyName: "Coca-Cola", shares: 20, currentPrice: 60.45, purchasePrice: 55.0),
-      Stock(symbol: "JNJ", companyName: "Johnson & Johnson", shares: 8, currentPrice: 152.32, purchasePrice: 140.0)
-    ])
-  ]
+  @State private var portfolios: [Portfolio] = []
+  @State private var showingImportSheet = false
   
   var totalAssets: Double {
     portfolios.reduce(0) { $0 + $1.totalValue }
   }
   
   var body: some View {
-    List {
-      Section(header: Text("Total Assets: $\(totalAssets, specifier: "%.2f")")) {
-        ForEach(portfolios) { portfolio in
-          NavigationLink(destination: PortfolioView(portfolio: portfolio)) {
-            PortfolioCard(portfolio: portfolio)
+    Group {
+      if portfolios.isEmpty {
+        VStack(spacing: 20) {
+          Image(systemName: "chart.pie")
+            .font(.system(size: 50))
+            .foregroundColor(.blue)
+          Text("No Portfolios Yet")
+            .font(.headline)
+          Text("Import your existing investments from Yahoo Finance")
+            .font(.subheadline)
+            .foregroundColor(.secondary)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal)
+          Button(action: {
+            showingImportSheet = true
+          }) {
+            HStack {
+              Image(systemName: "square.and.arrow.down")
+              Text("Import from Yahoo Finance")
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+          }
+        }
+        .padding()
+      } else {
+        List {
+          Section(header: Text("Total Assets: $\(totalAssets, specifier: "%.2f")")) {
+            ForEach(portfolios) { portfolio in
+              NavigationLink(destination: PortfolioView(portfolio: portfolio)) {
+                PortfolioCard(portfolio: portfolio)
+              }
+            }
           }
         }
       }
     }
-    .navigationTitle("My Portfolios")
+    .navigationTitle("Investments")
+    .sheet(isPresented: $showingImportSheet) {
+      ImportInvestmentsView(portfolios: $portfolios)
+    }
   }
 }
