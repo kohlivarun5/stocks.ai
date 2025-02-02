@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import InvestmentsView
 
 @main
 struct stocks_aiApp: App {
@@ -24,8 +25,15 @@ struct stocks_aiApp: App {
     }()
 
     var body: some Scene {
+        
         WindowGroup {
-            ContentView()
+            TabView {
+                InvestmentsView()
+                    .tabItem {
+                        Label("Investments", systemImage: "chart.line.uptrend.xyaxis")
+                    }
+                // ... other tabs ...
+            }
         }
         .modelContainer(sharedModelContainer)
     }
