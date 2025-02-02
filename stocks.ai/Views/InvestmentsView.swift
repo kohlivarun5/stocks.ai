@@ -30,9 +30,8 @@ struct InvestmentsView: View {
               Text("Import from Yahoo Finance")
             }
             .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
+            .background(.bar)
+            .cornerRadius(20)
           }
         }
         .padding()
@@ -53,4 +52,9 @@ struct InvestmentsView: View {
       ImportInvestmentsView(portfolios: $portfolios)
     }
   }
+}
+
+#Preview {
+  InvestmentsView()
+    .modelContainer(for: Item.self, inMemory: true)
 }
