@@ -15,7 +15,20 @@ struct InvestmentsView: View {
     var body: some View {
         List {
             ForEach(portfolios) { portfolio in
-                PortfolioCard(portfolio: portfolio)
+
+              NavigationLink(destination: PortfolioView(portfolio:portfolio)) {
+                HStack {
+                        Image(systemName: "chart.pie.fill")
+                            .foregroundColor(.blue)
+                        VStack(alignment: .leading) {
+                            Text(portfolio.name)
+                                .font(.headline)
+                            Text("Manage your stock portfolios")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                }
             }
         }
         .navigationTitle("My Portfolios")
