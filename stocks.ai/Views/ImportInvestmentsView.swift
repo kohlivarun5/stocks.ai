@@ -3,45 +3,57 @@ import SwiftUI
 struct ImportInvestmentsView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var portfolios: [Portfolio]
-    @State private var username = ""
-    @State private var password = ""
     @State private var isLoading = false
     @State private var error: String?
     
+    private let yahooService = YahooFinanceService()
+    
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("Yahoo Finance Account")) {
-                    TextField("Email", text: $username)
-                        .textContentType(.emailAddress)
-                        //.autocapitalization(.none)
-                    SecureField("Password", text: $password)
-                        .textContentType(.password)
-                }
-                
-                if let error = error {
-                    Section {
+            VStack(spacing: 20) {
+                if isLoading {
+                    ProgressView("Connecting to Yahoo Finance...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                } else {
+                    Image(systemName: "link.circle.fill")
+                        .font(.system(size: 60))
+                        .foregroundColor(.blue)
+                    
+                    Text("Connect Yahoo Finance")
+                        .font(.headline)
+                    
+                    Text("Sign in with your Yahoo account to import your portfolios")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                    
+                    if let error = error {
                         Text(error)
                             .foregroundColor(.red)
+                            .font(.caption)
                     }
-                }
-                
-                Section {
+                    
                     Button(action: importPortfolios) {
-                        if isLoading {
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                        } else {
-                            Text("Import Portfolios")
+                        HStack {
+                            Image(systemName: "yahoo")
+                            Text("Sign in with Yahoo")
                         }
+                        .padding()
+                        .background(.bar)
+                        .cornerRadius(20)
                     }
-                    .disabled(username.isEmpty || password.isEmpty || isLoading)
                 }
             }
+            .padding()
             .navigationTitle("Import Investments")
-            //.navigationBarItems(trailing: Button("Cancel") {
-            //    dismiss()
-            //})
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
+            }
         }
     }
     
@@ -49,28 +61,27 @@ struct ImportInvestmentsView: View {
         isLoading = true
         error = nil
         
-        // Here you would implement the Yahoo Finance API integration
-        // For now, we'll simulate the import with a delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            // TODO: Implement actual Yahoo Finance API integration
-            // This is just example data
-            portfolios = [
-                Portfolio(name: "Growth", stocks: [
-                    Stock(symbol: "AAPL", companyName: "Apple Inc.", 
-                         shares: 10, currentPrice: 175.43, purchasePrice: 150.0),
-                    Stock(symbol: "MSFT", companyName: "Microsoft", 
-                         shares: 5, currentPrice: 338.11, purchasePrice: 300.0)
-                ]),
-                Portfolio(name: "Dividend", stocks: [
-                    Stock(symbol: "KO", companyName: "Coca-Cola", 
-                         shares: 20, currentPrice: 60.45, purchasePrice: 55.0),
-                    Stock(symbol: "JNJ", companyName: "Johnson & Johnson", 
-                         shares: 8, currentPrice: 152.32, purchasePrice: 140.0)
-                ])
-            ]
-            
-            isLoading = false
-            dismiss()
+        Task {
+            do {
+                try await yahooService.authenticate()
+                let importedPortfolios = try await yahooService.fetchPortfolios()
+                
+                await MainActor.run {
+                    portfolios = importedPortfolios
+                    isLoading = false
+                    dismiss()
+                }
+            } catch let yahooError as YahooFinanceError {
+                await MainActor.run {
+                    error = yahooError.message
+                    isLoading = false
+                }
+            } catch {
+                await MainActor.run {
+                    self.error = "An unexpected error occurred"
+                    isLoading = false
+                }
+            }
         }
     }
 } 

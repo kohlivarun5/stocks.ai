@@ -14,6 +14,7 @@
 		4F3D10A52D4F1BAA00353079 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D10A02D4F1BAA00353079 /* Stock.swift */; };
 		4F3D10A92D4F1F2D00353079 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D10A82D4F1F2D00353079 /* PortfolioView.swift */; };
 		4F3D10AB2D4F232D00353079 /* ImportInvestmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D10AA2D4F232D00353079 /* ImportInvestmentsView.swift */; };
+		4F3D10AE2D4F264000353079 /* YahooFinanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D10AD2D4F264000353079 /* YahooFinanceService.swift */; };
 		4F851CAD2D4F165500285B11 /* stocks_aiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F851CAC2D4F165500285B11 /* stocks_aiApp.swift */; };
 		4F851CAF2D4F165500285B11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F851CAE2D4F165500285B11 /* ContentView.swift */; };
 		4F851CB12D4F165500285B11 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F851CB02D4F165500285B11 /* Item.swift */; };
@@ -29,6 +30,7 @@
 		4F3D10A02D4F1BAA00353079 /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		4F3D10A82D4F1F2D00353079 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
 		4F3D10AA2D4F232D00353079 /* ImportInvestmentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportInvestmentsView.swift; sourceTree = "<group>"; };
+		4F3D10AD2D4F264000353079 /* YahooFinanceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YahooFinanceService.swift; sourceTree = "<group>"; };
 		4F851CA92D4F165500285B11 /* stocks.ai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stocks.ai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F851CAC2D4F165500285B11 /* stocks_aiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stocks_aiApp.swift; sourceTree = "<group>"; };
 		4F851CAE2D4F165500285B11 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		4F3D10AC2D4F264000353079 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4F3D10AD2D4F264000353079 /* YahooFinanceService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		4F851CA02D4F165500285B11 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 		4F851CAB2D4F165500285B11 /* stocks.ai */ = {
 			isa = PBXGroup;
 			children = (
+				4F3D10AC2D4F264000353079 /* Services */,
 				4F3D109E2D4F1BAA00353079 /* Models */,
 				4F3D109A2D4F1BAA00353079 /* Views */,
 				4F851CAC2D4F165500285B11 /* stocks_aiApp.swift */,
@@ -189,6 +200,7 @@
 				4F851CAF2D4F165500285B11 /* ContentView.swift in Sources */,
 				4F3D10A42D4F1BAA00353079 /* Portfolio.swift in Sources */,
 				4F3D10A12D4F1BAA00353079 /* StockRow.swift in Sources */,
+				4F3D10AE2D4F264000353079 /* YahooFinanceService.swift in Sources */,
 				4F851CB12D4F165500285B11 /* Item.swift in Sources */,
 				4F851CAD2D4F165500285B11 /* stocks_aiApp.swift in Sources */,
 			);
