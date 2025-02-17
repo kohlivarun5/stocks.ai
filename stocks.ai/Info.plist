@@ -6,5 +6,16 @@
 	<array>
 		<string>fetch</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>stocks-ai</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.yourdomain.stocks-ai</string>
+		</dict>
+	</array>
 </dict>
 </plist>

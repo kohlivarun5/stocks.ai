@@ -23,8 +23,9 @@ struct stocks_aiApp: App {
     }
   }()
   
+  @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+  
   var body: some Scene {
-    
     WindowGroup {
       NavigationView {
         TabView {
@@ -37,5 +38,12 @@ struct stocks_aiApp: App {
       }
     }
     .modelContainer(sharedModelContainer)
+  }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    // The ASWebAuthenticationSession will handle the callback automatically
+    return true
   }
 }
