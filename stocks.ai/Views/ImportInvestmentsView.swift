@@ -36,7 +36,7 @@ struct ImportInvestmentsView: View {
                     
                     Button(action: importPortfolios) {
                         HStack {
-                            Image(systemName: "yahoo")
+                            Image(systemName: "link.badge.plus")
                             Text("Sign in with Yahoo")
                         }
                         .padding()
